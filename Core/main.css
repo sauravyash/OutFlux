@@ -1,0 +1,59 @@
+* {
+    float: left;
+}
+
+:root {
+  --color: red;
+  --tbheight: 10px;
+}
+
+html,body {
+  margin:0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+}
+
+.container {
+  width: 100%;
+  height: calc(100% - var(--tbheight));
+  margin: 0;
+  background-color: #111;
+}
+
+.titlebar {
+  width: 100%;
+  height: var(--tbheight);
+  background-color: #111;
+}
+
+.viewer{
+  background-color: #333;
+  color: #eee;
+  height: calc(100% - 64px);
+  width: calc(100% - 250px);
+}
+
+.sidebar {
+  background-color: #303;
+  height: calc(100% - 64px);
+  width: 250px;
+}
+
+.player {
+  background-color: #111;
+  width: 100%;
+  height: 64px;
+}
+
+.track {
+
+}
+
+.controls {
+
+}
+
+.volume {
+
+}
