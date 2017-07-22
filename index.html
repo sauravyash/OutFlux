@@ -2,28 +2,29 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="dependencies/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="dependencies/bootstrap4/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <title>OutFlux</title>
   </head>
   <body>
-    <div class="container">
+    <div class="window">
       <div class="sidebar">
         <!-- i class="fa fa-bars" aria-hidden="true"></i -->
       </div>
       <div class="viewer">
       </div>
       <div class="player">
-        <div class="track">
+        <div class="track col">
           <div class="art">
-            <img id="albumart" src="">
+            <img id="albumart">
           </div>
           <div class="trackname">
           </div>
           <div class="artistname">
           </div>
         </div>
-        <div class="controls">
+        <div class="controls col">
           <div class="controlbutton">
             <div class="shuffle">
             </div>
@@ -39,9 +40,12 @@
           <div class="progressbar">
           </div>
         </div>
-        <div class="volume">
+        <div class="volume col">
         </div>
       </div>
     </div>
   </body>
+  <script src="dependencies/jquery-3.2.1.min.js"></script>
+  <script src="dependencies/tether/dist/js/tether.js"></script>
+  <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
 </html>
