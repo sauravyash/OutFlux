@@ -16,14 +16,8 @@ html,body {
 
 .container {
   width: 100%;
-  height: calc(100% - var(--tbheight));
+  height: 100% ;
   margin: 0;
-  background-color: #111;
-}
-
-.titlebar {
-  width: 100%;
-  height: var(--tbheight);
   background-color: #111;
 }
 
@@ -47,10 +41,34 @@ html,body {
 }
 
 .track {
-
+  
 }
 
 .controls {
+
+}
+
+.controlbutton {
+
+}
+
+.shuffle {
+
+}
+
+.play-previous {
+
+}
+
+.play{
+
+}
+
+.play-next {
+
+}
+
+.repeat {
 
 }
 
