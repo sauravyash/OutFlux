@@ -1,5 +1,6 @@
 * {
     float: left;
+    color: #ccc;
 }
 
 :root {
@@ -16,7 +17,7 @@ html,body {
 
 .window {
   width: 100%;
-  height: 100% ;
+  height: calc(100% - 64px) ;
   margin: 0;
   background-color: #111;
 }
@@ -24,74 +25,153 @@ html,body {
 .viewer{
   background-color: #333;
   color: #eee;
-  height: calc(100% - 64px);
+  height: 100%;
   width: calc(100% - 250px);
 }
 
 .sidebar {
   background-color: #303;
-  height: calc(100% - 64px);
+  height: 100%;
   width: 250px;
 }
 
 .player {
-  background-color: #111;
+  background-color: #222;
   width: 100%;
   height: 64px;
 }
 
 .track {
-
+  height: 100%;
+  float: left;
+  padding-right: +30px;
 }
 
 .art {
-
+  height: 100%;
+  padding-right: 0;
 }
 
 #albumart {
-
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 48px;
+  width: 48px;
+  border-radius: 4px;
+  background-color: #111;
 }
 
-.trackname {
-
+.trackdetails {
+  height: 100%;
+  float:right;
+  padding-left: 0;
 }
 
-.artistname {
-
+.trackname, .artistname {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
 }
 
-.controls, .controlbutton, .shuffle, .play-previous, .play, .play-next, .repeat, {
-    height: 100%;
+a.tname, a.aname {
+  height: 100%;
+  white-space: nowrap;
+}
+
+.tname{
+  display:-webkit-box;
+  -webkit-box-align:end;
+}
+
+.aname {
+  font-weight: lighter;
+  font-size: 70%;
 }
 
 .controls {
-
+  height: 100%;
 }
 
 .controlbutton {
+  height: 60%;
+}
 
+.controlbutton i {
+  padding-top: 16px;
+  width:100%;
+  text-align: center;
+  color: #999;
 }
 
 .shuffle {
-
+  height: 100%;
 }
 
 .play-previous {
-
+  height: 100%;
 }
 
-.play{
+.play {
+  height: 100%;
+}
 
+.playbutton::before{
+  font-family: FontAwesome;
+  content: "\f04b";
+  color: #999;
+  font-style: normal;
+}
+
+.pausebutton::before{
+  font-family: FontAwesome;
+  content: "\f04c";
+  color: #999;
+  font-style: normal;
 }
 
 .play-next {
-
+  height: 100%;
 }
 
 .repeat {
+  height: 100%;
+}
+.progressinfo {
+  height: 40%;
+  vertical-align: middle;
+}
 
+.currenttime {
+  text-align: right;
+}
+
+div.currenttime a {
+  float: right;
+}
+.progressbar {
+  background-color: #444;
+  height: 5px;
+  margin: 5px 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.currentprogress {
+  height: 5px;
+  width: 0%;
+  background-color: #777;
+  position: absolute;
+  left:0;
+  border-radius: 16px;
 }
 
 .volume {
+  height: 100%;
+}
 
+.small {
+  color: #777;
 }
