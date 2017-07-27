@@ -164,26 +164,17 @@ div.currenttime a {
   height: 5px;
   margin: 5px 0;
   border-radius: 16px;
-  overflow: hidden;
+  padding: 0;
 }
 
 .currentprogress {
-  height: 5px;
-  width: 0%;
   background-color: #777;
-  position: absolute;
-  left:0;
-  border-radius: 16px;
+  height: 5px;
+  border-radius: 20px;
 }
 
 .volume {
   height: 100%;
-}
-
-.vol-controller {
-  float: right;
-  height: 100%;
-  width: 50%;
 }
 
 .vol-icon {
@@ -224,7 +215,7 @@ div.currenttime a {
 	/* position: relative; */
 	text-align: left;
 }
-.ui-slider:hover .ui-slider-handle, .ui-slider:active .ui-slider-handle{
+/*.ui-slider:hover*/ .ui-slider-handle, .ui-slider:active .ui-slider-handle{
 	position: absolute;
 	z-index:100;
 	width: 12px;

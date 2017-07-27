@@ -45,6 +45,8 @@ function volUpdate() {
   $('.vol-slider').width(
     ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) * 100)
   );
+  var volPerc = ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) * 100);
+  track.volume = volPerc / 100;
 }
 // volume bar update
 $(function() {
