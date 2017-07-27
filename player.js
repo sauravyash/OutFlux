@@ -9,11 +9,13 @@ myaudio.muted = true; - This will mute the track
 
 // initialise variables
 var tracklink = "Gang-Related.mp3";
+var trackimg = "";
 var track = new Audio(tracklink);
 var playermode = "pause";
 var progressInPercent = 0;
-
-
+var reader  = new FileReader();
+var trackdata = ["Track Name", "Track Artist", track];
+var volume = 50;
 
 // Play action
 function playerPlay() {
@@ -37,7 +39,24 @@ $('.play').on('click', '.pausebutton', function(){
   playerPause();
 });
 
-// seconds to minutes
+
+// volume to percentage
+function volUpdate() {
+  $('.vol-slider').width(
+    ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) * 100)
+  );
+}
+// volume bar update
+$(function() {
+  $( ".vol-scroll" ).slider();
+});
+
+
+$(function() {
+  $( ".progressbar" ).slider();
+});
+
+// seconds to minutes (+ Hours if required)
 function timecalc(time) {
     // Hours, minutes and seconds
     var hrs = ~~(time / 3600);
@@ -59,22 +78,51 @@ function timecalc(time) {
     return ret;
 }
 
-function oneSecondFunction() {
+// function runs every second
+function clockInTime() {
   // current time
   $( document ).ready(function() {
       $(".ctime").text(timecalc(track.currentTime));
       // console.log(timecalc(track.currentTime));
   });
-
-    // total progress
+  // total progress
   $( document ).ready(function() {
       $(".ttime").text(timecalc(track.duration));
       // console.log(timecalc(track.duration));
   });
-
+  // console.log();
   // progress bar
   var progressInPercent = ~~((track.currentTime / track.duration) * 10000) / 100;
   $('.currentprogress').css('width', progressInPercent +'%');
 }
+function milisecFunc(){
+  if ($('.vol-slider').width() !== ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) *100)) {
+    volUpdate();
+  }
+}
 
-var myVar = setInterval(oneSecondFunction, 1000);
+function sliderclock(){
+  //volume icon
+  if ($('.vol-slider').width() > 50) {
+    $('.vol-ico').addClass('fa-volume-up').removeClass('fa-volume-down').removeClass('fa-volume-off');
+  } else if ($('.vol-slider').width() > 0) {
+    $('.vol-ico').addClass('fa-volume-down').removeClass('fa-volume-up').removeClass('fa-volume-off');
+  } else {
+    $('.vol-ico').addClass('fa-volume-off').removeClass('fa-volume-down').removeClass('fa-volume-up');
+  }
+}
+
+// excecute function
+setInterval(clockInTime, 1000);
+setInterval(sliderclock, 200);
+setInterval(milisecFunc, 20);
+
+
+// id3 tag scanner
+/* reader.readAsDataURL(trackblob).onchange = function(e) {
+	id3(this.files[0], function(err, tags) {
+		// tags now contains the ID3 tags
+    console.log(err, tags);
+	});
+}
+*/

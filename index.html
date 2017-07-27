@@ -62,17 +62,38 @@
           </div>
         </div>
         <div class="volume col-3">
+          <div class="vol-controller">
+            <div class="vol-icon">
+              <i class="fa fa-volume-off vol-ico"></i>
+            </div>
+            <div class="vol-scroll">
+              <div class="vol-slider"></div>
+            </div>
+          </div>
         </div>
       </div>
   </body>
+  <footer>
   <!-- electron code-->
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-  <!-- normal script imports -->
+  <!--
+  ------------------------------
+  || Dependency script imports ||
+  ------------------------------
+  Notes:
+  - bootstrap 4 alpha in use
+  - jquery 3.2.1
+  - Jquery ui
+  - js ID# tag scanner: https://github.com/43081j/id3
+  -->
   <script src="dependencies/jquery-3.2.1.min.js"></script>
+  <script src="dependencies/jquery-1.11.4.min.js"></script>
   <script src="dependencies/tether/dist/js/tether.js"></script>
   <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
-  <script src="dependencies/jsmediatags/dist/jsmediatags.min.js"></script>
+  <script src="dependencies/id3parser.js"></script>
+  <!-- app specific js -->
   <script src="player.js"></script>
   <!-- electron code-->
   <script>if (window.module) module = window.module;</script>
+</footer>
 </html>
