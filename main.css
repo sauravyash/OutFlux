@@ -44,7 +44,7 @@ html,body {
 .track {
   height: 100%;
   float: left;
-  padding-right: +30px;
+  padding-right: 0px;
 }
 
 .art {
@@ -71,7 +71,7 @@ html,body {
 .trackdetails {
   height: 100%;
   float:right;
-  padding-left: 0;
+  padding-left: 15px;
 }
 
 .trackname, .artistname {
@@ -167,10 +167,14 @@ div.currenttime a {
   padding: 0;
 }
 
-.currentprogress {
+.ui-slider-range {
   background-color: #777;
   height: 5px;
   border-radius: 20px;
+}
+
+.vol-scroll:hover div, .vol-scroll:active div {
+  background-color: rgb(4, 150, 100);
 }
 
 .volume {
@@ -199,23 +203,12 @@ div.currenttime a {
   right: 16px;
 }
 
-.vol-slider {
-  height: 5px;
-  width: 50%;
-  background-color: #777;
-  position: absolute;
-  left:0;
-  border-radius: 20px;
-  z-index: 1;
-}
-
-
 /* jquery UI import */
 .ui-slider {
 	/* position: relative; */
 	text-align: left;
 }
-/*.ui-slider:hover*/ .ui-slider-handle, .ui-slider:active .ui-slider-handle{
+.ui-slider:hover .ui-slider-handle, .ui-slider:active .ui-slider-handle{
 	position: absolute;
 	z-index:100;
 	width: 12px;
@@ -223,11 +216,11 @@ div.currenttime a {
   border: 2px solid #ccc;
 	cursor: default;
   outline: none;
-  margin-left: -3px;
+  margin-left: -6px; /* -3px; */
 }
 
-.ui-slider:hover .vol-slider, .ui-slider:hover .vol-slider{
-  background-color: rgb(4, 150, 100)
+.progressbar:hover .ui-slider-range, .progressbar:active .ui-slider-range{
+  background-color: rgb(4, 150, 100);
 }
 
 .ui-slider .ui-slider-range {

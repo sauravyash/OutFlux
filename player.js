@@ -8,14 +8,17 @@ myaudio.muted = true; - This will mute the track
 */
 
 // initialise variables
-var tracklink = "Gang-Related.mp3";
+var tracklink = "Music/Would You Ever.mp3";
 var trackimg = "";
 var track = new Audio(tracklink);
 var playermode = "pause";
-var progressInPercent = 0;
+var progressInPercent = 50;
 var reader  = new FileReader();
 var trackdata = ["Track Name", "Track Artist", track];
-var volume = 50;
+
+function setProgress(time){
+  track.currentTime = time;
+}
 
 // Play action
 function playerPlay() {
@@ -29,7 +32,7 @@ function playerPause() {
   $('.playerbutton').addClass('playbutton').removeClass('pausebutton');
 }
 
-// play button - \f04b
+// play button - font unicode: \f04b
 $('.play').on('click','.playbutton', function(){
   playerPlay();
 });
@@ -39,24 +42,44 @@ $('.play').on('click', '.pausebutton', function(){
   playerPause();
 });
 
+// progress bar update on click
+$('.progressinfo').on('mouseup', '.progressbar', function(){
+  var progress = ~~((parseInt($('.progressbar > span').css('left')) / $('.progressbar').width()) * 100 );
+  var progInTime = ~~(progress * track.duration) / 100;
+  //console.log(progInTime);
+  setProgress(progInTime);
+});
+
+// Update Progres Bar every second
+function progressUpdate(){
+  var sliderProg = ((track.currentTime / track.duration) * 10000) / 100;
+  $( ".progressbar" ).slider('value', sliderProg);
+  //console.log(sliderProg);
+}
 
 // volume to percentage
 function volUpdate() {
-  $('.vol-slider').width(
-    ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) * 100)
-  );
   var volPerc = ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) * 100);
+  if (volPerc > 100) {var volPerc = 100}
   track.volume = volPerc / 100;
 }
+
 // volume bar update
 $(function() {
-  $( ".vol-scroll" ).slider();
+  $( ".vol-scroll" ).slider({
+    value: 60,
+    range: "min"
+  });
 });
 
-
-$(function() {
-  $( ".progressbar" ).slider();
+// progressbr slider
+$(function()  {
+  $( ".progressbar" ).slider({
+    range: "min",
+    step: 0.1
+  });
 });
+
 
 // seconds to minutes (+ Hours if required)
 function timecalc(time) {
@@ -85,39 +108,47 @@ function clockInTime() {
   // current time
   $( document ).ready(function() {
       $(".ctime").text(timecalc(track.currentTime));
-      // console.log(timecalc(track.currentTime));
   });
-  // total progress
+
+  // total time
   $( document ).ready(function() {
       $(".ttime").text(timecalc(track.duration));
-      // console.log(timecalc(track.duration));
   });
-  // console.log();
-  // progress bar
-  var progressInPercent = ~~((track.currentTime / track.duration) * 10000) / 100;
-  $('.currentprogress').css('width', progressInPercent +'%');
-}
-function milisecFunc(){
-  if ($('.vol-slider').width() !== ~~((parseInt($('.vol-scroll > .ui-slider-handle').css('left')) / 92) *100)) {
-    volUpdate();
+
+  // pause player when song finished
+  if (track.currentTime == track.duration){
+    playerPause();
   }
+
+  // console logs
 }
 
-function sliderclock(){
+function milisecFunc(){
+  volUpdate();
+
+}
+
+function volIcons(){
   //volume icon
-  if ($('.vol-slider').width() > 50) {
+  if (track.volume > 0.50) {
     $('.vol-ico').addClass('fa-volume-up').removeClass('fa-volume-down').removeClass('fa-volume-off');
-  } else if ($('.vol-slider').width() > 0) {
+  } else if (track.volume > 0) {
     $('.vol-ico').addClass('fa-volume-down').removeClass('fa-volume-up').removeClass('fa-volume-off');
   } else {
     $('.vol-ico').addClass('fa-volume-off').removeClass('fa-volume-down').removeClass('fa-volume-up');
   }
 }
 
-// excecute function
-setInterval(clockInTime, 1000);
-setInterval(sliderclock, 200);
+function progressBarClock() {
+  // progress bar
+  progressUpdate();
+}
+
+// excecute clocks
+setInterval(clockInTime, 500);
+setInterval(volIcons, 200);
 setInterval(milisecFunc, 20);
+setInterval(progressBarClock, 1000);
 
 
 // id3 tag scanner
