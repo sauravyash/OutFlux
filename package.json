@@ -1,14 +1,18 @@
 {
-  "name"    : "OutFlux",
-  "version" : "0.1",
-  "main"    : "main.js",
-  "devDependencies": {
-     "electron": "^1.4.3",
-     "electron-packager": "^8.1.0"
-  },
-  "scripts": {
-     "outflux-mac": "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux Outflux --overwrite --platform=darwin --arch=x64 --icon=icons/outflux1024.icns --prune=true --out=release-builds",
-     "outflux-win": "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/outflux1024.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"OutFlux\"",
-     "outflux-linux" : "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux --overwrite --platform=linux --arch=x64 --icon=icons/outflux1024.png --prune=true --out=release-builds"
-  }
+   "name": "OutFlux",
+   "version": "0.1",
+   "main": "main.js",
+   "devDependencies": {
+      "electron": "^1.4.3",
+      "electron-packager": "^8.1.0"
+   },
+   "scripts": {
+      "outflux-mac": "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux Outflux --overwrite --platform=darwin --arch=x64 --icon=icons/outflux1024.icns --prune=true --out=release-builds",
+      "outflux-win": "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/outflux1024.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"OutFlux\"",
+      "outflux-linux": "electron-packager /Users/Yash/Documents/OutFlux/Outflux-Git/OutFlux --overwrite --platform=linux --arch=x64 --icon=icons/outflux1024.png --prune=true --out=release-builds"
+   },
+   "dependencies": {
+      "base64-js": "^1.2.1",
+      "jsmediatags": "^3.6.2"
+   }
 }

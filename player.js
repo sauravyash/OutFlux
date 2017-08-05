@@ -9,12 +9,14 @@ myaudio.muted = true; - This will mute the track
 
 // initialise variables
 var tracklink = "Music/Would You Ever.mp3";
-var trackimg = "";
+var id3Details = ["title", "artist", "album", ];
 var track = new Audio(tracklink);
 var playermode = "pause";
-var progressInPercent = 50;
-var reader  = new FileReader();
-var trackdata = ["Track Name", "Track Artist", track];
+
+// node modules
+var path = require('path');
+var jsmediatags = require("jsmediatags");
+var base64js = require('base64-js');
 
 function setProgress(time){
   track.currentTime = time;
@@ -81,6 +83,7 @@ $(function()  {
 });
 
 
+
 // seconds to minutes (+ Hours if required)
 function timecalc(time) {
     // Hours, minutes and seconds
@@ -142,6 +145,32 @@ function volIcons(){
 function progressBarClock() {
   // progress bar
   progressUpdate();
+  setID3Data();
+}
+
+function setID3Data() {
+  // id3 tag scanner
+  jsmediatags.read(path.join(__dirname, tracklink), {
+    onSuccess: function(tag) {
+      id3json = tag;
+      // console.log(tag);
+    },
+    onError: function(error) {
+      console.log('ID3parser Error: ', error.type, error.info);
+    }
+  });
+  $('.aname').html(id3json.tags.artist);
+  $('.tname').html(id3json.tags.title);
+  // id3json.tags.picture.data
+  var b64encoded = base64js.fromByteArray(id3json.tags.picture.data)
+
+  $('#albumart').attr('src', 'data:image/png;base64,'+b64encoded);
+
+  id3Details[0] = id3json.tags.title;
+  id3Details[1] = id3json.tags.artist;
+  id3Details[2] = id3json.tags.album;
+  id3Details[3] = id3json.tags.picture;
+  // console.log(id3Details[2]);
 }
 
 // excecute clocks
@@ -151,11 +180,34 @@ setInterval(milisecFunc, 20);
 setInterval(progressBarClock, 1000);
 
 
-// id3 tag scanner
-/* reader.readAsDataURL(trackblob).onchange = function(e) {
-	id3(this.files[0], function(err, tags) {
-		// tags now contains the ID3 tags
-    console.log(err, tags);
-	});
+/* // uint8clusteredarray to img
+// create an offscreen canvas
+var canvas=document.createElement("canvas");
+var ctx=canvas.getContext("2d");
+
+// size the canvas to your desired image
+canvas.width=512;
+canvas.height=512;
+
+// get the imageData and pixel array from the canvas
+var imgData=ctx.getImageData(0,0,512,512);
+var data=id3json.tags.picture.data;
+
+// manipulate some pixel elements
+for(var i=0;i<data.length;i+=4){
+    data[i]=255;   // set every red pixel element to 255
+    data[i+3]=255; // make this pixel opaque
 }
+
+// put the modified pixels back on the canvas
+ctx.putImageData(imgData,0,0);
+
+// create a new img object
+var image=new Image();
+
+// set the img.src to the canvas data url
+image.src=canvas.toDataURL();
+
+// append the new img object to the page
+//document.body.appendChild(image);
 */
