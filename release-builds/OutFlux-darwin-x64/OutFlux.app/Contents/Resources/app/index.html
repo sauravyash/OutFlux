@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="dependencies/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="dependencies/bootstrap4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="player.css">
+    <link rel="stylesheet" type="text/css" href="loading.css">
+    <title>OutFlux</title>
+  </head>
+  <body>
+    <div class="loading">
+      <canvas></canvas>
+    </div>
+    <div class="titlebar">
+    </div>
+    <div class="window">
+      <div class="sidebar">
+      </div>
+      <div class="viewer">
+      </div>
+    </div>
+      <div class="player">
+        <div class="track col-3">
+          <div class="art col-3">
+            <img id="albumart">
+          </div>
+          <div class="trackdetails col-9">
+            <div class="trackname">
+              <a class="tname small">No Track Specified</a>
+            </div>
+            <div class="artistname">
+              <a class="aname small">No Artist Specified</a>
+            </div>
+          </div>
+        </div>
+        <div class="controls col-6">
+          <div class="controlbutton col">
+            <div class="shuffle col-3">
+                <i class="fa fa-random"></i>
+            </div>
+            <div class="play-previous col-2">
+              <i class="fa fa-step-backward"></i>
+            </div>
+            <div class="play col-2">
+              <i class="fa playerbutton playbutton"></i>
+            </div>
+            <div class="play-next col-2">
+              <i class="fa fa-step-forward"></i>
+            </div>
+            <div class="repeat col-3">
+              <i class="fa fa-retweet"></i>
+            </div>
+          </div>
+          <div class="progressinfo col">
+            <div class="currenttime col-2 small">
+              <a class="ctime small">-:--</a>
+            </div>
+            <div class="progressbar col-8">
+            </div>
+            <div class="totaltime col-2 small">
+              <a class="ttime small">-:--</a>
+            </div>
+          </div>
+        </div>
+        <div class="volume col-3">
+          <div class="vol-controller col-9">
+            <div class="vol-icon">
+              <i class="fa fa-volume-off vol-ico"></i>
+            </div>
+            <div class="vol-scroll">
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+  <footer>
+  <!-- electron code-->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <!--
+  ------------------------------
+  || Dependency script imports ||
+  ------------------------------
+  Notes:
+  - bootstrap 4 alpha in use
+  - jquery 3.2.1
+  - Jquery ui
+  - js ID# tag scanner: https://github.com/43081j/id3
+  -->
+  <script src="dependencies/jquery-3.2.1.min.js"></script>
+  <script src="dependencies/jquery-1.11.4.min.js"></script>
+  <script src="dependencies/tether/dist/js/tether.js"></script>
+  <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
+  <!-- app specific js -->
+  <script src="player.js"></script>
+  <script src="loading.js"></script>
+  <!-- electron code-->
+  <script>if (window.module) module = window.module;</script>
+</footer>
+</html>

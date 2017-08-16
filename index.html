@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="dependencies/fontawesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="dependencies/bootstrap4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="player.css">
+    <link rel="stylesheet" type="text/css" href="loading.css">
     <title>OutFlux</title>
   </head>
   <body>
+    <div class="loading">
+      <div class="loading-left">
+      </div>
+      <div class="loading-right">
+      </div>
+    </div>
     <div class="titlebar">
     </div>
     <div class="window">
@@ -19,7 +26,7 @@
       <div class="player">
         <div class="track col-3">
           <div class="art col-3">
-            <img id="albumart">
+            <img id="albumart" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYwIDYwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2MCA2MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxnPgoJPHBhdGggZD0iTTEwLDRIOEgwdjUyaDhoMmg1MFY0SDEweiBNOCw1NEgyVjZoNlY1NHogTTU4LDU0SDEwVjZoNDhWNTR6IiBmaWxsPSIjYWJhYmFiIi8+Cgk8cGF0aCBkPSJNMjEuNSw0N2MzLjUzMywwLDYuNDExLTIuNjE3LDYuNDkyLTUuODZDMjcuOTkzLDQxLjEyNiwyOCw0MS4xMTUsMjgsNDEuMTAyVjIzLjg1NGwxNy0yLjY4NHY5LjUxICAgQzQzLjgzMSwyOS42NDIsNDIuMjQ2LDI5LDQwLjUsMjljLTMuNTg0LDAtNi41LDIuNjkxLTYuNSw2czIuOTE2LDYsNi41LDZzNi41LTIuNjkxLDYuNS02VjIwdi01di0xYzAtMC4yOTItMC4xMjgtMC41Ny0wLjM1MS0wLjc2ICAgYy0wLjIyMi0wLjE5LTAuNTEtMC4yNzQtMC44MDYtMC4yMjhsLTE5LDNDMjYuMzU4LDE2LjA4OSwyNiwxNi41MDgsMjYsMTd2My4yODZWMjN2MTMuNjhDMjQuODMxLDM1LjY0MiwyMy4yNDYsMzUsMjEuNSwzNSAgIGMtMy41ODQsMC02LjUsMi42OTEtNi41LDZTMTcuOTE2LDQ3LDIxLjUsNDd6IE00MC41LDM5Yy0yLjQ4MSwwLTQuNS0xLjc5NC00LjUtNHMyLjAxOS00LDQuNS00czQuNSwxLjc5NCw0LjUsNFM0Mi45ODEsMzksNDAuNSwzOSAgIHogTTI4LDE3Ljg1NGwxNy0yLjY4NXYzLjk3NkwyOCwyMS44M3YtMS41NDRWMTcuODU0eiBNMjEuNSwzN2MyLjQ4MSwwLDQuNSwxLjc5NCw0LjUsNHMtMi4wMTksNC00LjUsNFMxNyw0My4yMDYsMTcsNDEgICBTMTkuMDE5LDM3LDIxLjUsMzd6IiBmaWxsPSIjYWJhYmFiIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
           </div>
           <div class="trackdetails col-9">
             <div class="trackname">
@@ -87,9 +94,9 @@
   <script src="dependencies/jquery-1.11.4.min.js"></script>
   <script src="dependencies/tether/dist/js/tether.js"></script>
   <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
-  <script src="dependencies/id3parser.js"></script>
   <!-- app specific js -->
   <script src="player.js"></script>
+  <script src="loading.js"></script>
   <!-- electron code-->
   <script>if (window.module) module = window.module;</script>
 </footer>

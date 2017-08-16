@@ -9,7 +9,6 @@ myaudio.muted = true; - This will mute the track
 
 // initialise variables
 var tracklink = "Music/Would You Ever.mp3";
-var id3Details = ["title", "artist", "album", ];
 var track = new Audio(tracklink);
 var playermode = "pause";
 
@@ -17,10 +16,24 @@ var playermode = "pause";
 var path = require('path');
 var jsmediatags = require("jsmediatags");
 var base64js = require('base64-js');
+const BrowserWindow = require('electron')
+
+
 
 function setProgress(time){
   track.currentTime = time;
 }
+
+// change window size on title bar double click
+function resize() {
+  var win = BrowserWindow.getCurrentWindow();
+  win.maximize();
+}
+
+$( ".titlebar" ).dblclick(function() {
+  resize();
+  alert('titlebar is dblclicked');
+});
 
 // Play action
 function playerPlay() {
@@ -42,6 +55,23 @@ $('.play').on('click','.playbutton', function(){
 // pause button - \f04c
 $('.play').on('click', '.pausebutton', function(){
   playerPause();
+});
+
+// repeat button
+
+function repeat() {
+  if (track.loop === false){
+    track.loop = true;
+    $('.repeat i').addClass('repeat-on')
+  }
+  else if (track.loop === true) {
+    track.loop === false;
+    $('.repeat i').removeClass('repeat-on')
+  }
+}
+
+$('.play').on('click', '.pausebutton', function(){
+
 });
 
 // progress bar update on click
@@ -148,6 +178,8 @@ function progressBarClock() {
   setID3Data();
 }
 
+
+
 function setID3Data() {
   // id3 tag scanner
   jsmediatags.read(path.join(__dirname, tracklink), {
@@ -166,19 +198,17 @@ function setID3Data() {
 
   $('#albumart').attr('src', 'data:image/png;base64,'+b64encoded);
 
-  id3Details[0] = id3json.tags.title;
-  id3Details[1] = id3json.tags.artist;
-  id3Details[2] = id3json.tags.album;
-  id3Details[3] = id3json.tags.picture;
-  // console.log(id3Details[2]);
 }
 
 // excecute clocks
-setInterval(clockInTime, 500);
-setInterval(volIcons, 200);
-setInterval(milisecFunc, 20);
-setInterval(progressBarClock, 1000);
+function initialise() {
+  setInterval(clockInTime, 500);
+  setInterval(volIcons, 200);
+  setInterval(milisecFunc, 20);
+  setInterval(progressBarClock, 1000);
+}
 
+setTimeout(initialise, 1000);
 
 /* // uint8clusteredarray to img
 // create an offscreen canvas

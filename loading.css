@@ -1,0 +1,18 @@
+.loading {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loading-left, .loading-right {
+  position: relative;
+
+}
+
+.loading-left {
+  left:0;
+}
+
+.loading-right {
+  right:0;
+}
