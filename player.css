@@ -1,51 +1,5 @@
-* {
-    float: left;
-    color: #ccc;
-}
-
-:root {
-  --color: red;
-  --tbheight: 10px;
-}
-
-html,body {
-  margin:0;
-  width: 100%;
-  height: 100%;
-  background-color: #111;
-}
-
-.titlebar {
-  height:36px;
-  width:100%;
-  position: fixed;
-  top:0;
-  -webkit-app-region: drag;
-  z-index: 100;
-}
-
-.window {
-  width: 100%;
-  height: calc(100% - 64px) ;
-  margin: 0;
-  background-color: #111;
-}
-
-.viewer{
-  background-color: #333;
-  color: #eee;
-  height: 100%;
-  width: calc(100% - 250px);
-}
-
-.sidebar {
-  background-color: #303;
-  height: 100%;
-  width: 250px;
-}
-
 .player {
-  background-color: #222;
+  background-color: #1b1b1b;
   width: 100%;
   height: 64px;
 }
@@ -70,7 +24,7 @@ html,body {
   height: 48px;
   width: 48px;
   border-radius: 4px;
-  background-color: #111;
+  background-color: #222;
   border: 0;
 }
 
@@ -91,17 +45,35 @@ html,body {
 }
 
 a.tname, a.aname {
-  height: 100%;
+  height: 1.2em;
   white-space: nowrap;
 }
 
+.marquee {
+  animation:scroll 15s linear 1;
+  animation-play-state: paused;
+
+}
+
+.marquee:hover {
+  animation-play-state: running;
+}
+
+@keyframes scroll{
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
 .tname{
+  position: relative;
   display:-webkit-box;
   -webkit-box-align:end;
+  font-weight: 500;
+  top: 12px;
 }
 
 .aname {
-  font-weight: lighter;
+  font-weight: 400;
   font-size: 70%;
 }
 
@@ -117,11 +89,14 @@ a.tname, a.aname {
   padding-top: 16px;
   width:100%;
   text-align: center;
-  color: #999;
 }
 
 .shuffle {
   height: 100%;
+}
+
+.shuffle-on {
+  color: rgb(4, 150, 100);
 }
 
 .play-previous {
@@ -139,14 +114,14 @@ a.tname, a.aname {
 .playbutton::before{
   font-family: FontAwesome;
   content: "\f04b";
-  color: #999;
+  color: #ccc;
   font-style: normal;
 }
 
 .pausebutton::before{
   font-family: FontAwesome;
   content: "\f04c";
-  color: #999;
+  color: #ccc;
   font-style: normal;
 }
 

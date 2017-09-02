@@ -13,6 +13,7 @@
    },
    "dependencies": {
       "base64-js": "^1.2.1",
+      "jquery.marquee": "^1.3.94",
       "jsmediatags": "^3.6.2"
    }
 }

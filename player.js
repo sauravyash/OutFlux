@@ -4,7 +4,7 @@ myaudio.pause(); - This will stop the music.
 myaudio.duration; - Returns the length of the music track.
 myaudio.currentTime = 0; - This will rewind the audio to the beginning.
 myaudio.loop = true; - This will make the audio track loop.
-myaudio.muted = true; - This will mute the track
+myaudio.muted = true; - This will mute68  the track
 */
 
 // initialise variables
@@ -16,8 +16,10 @@ var playermode = "pause";
 var path = require('path');
 var jsmediatags = require("jsmediatags");
 var base64js = require('base64-js');
-const BrowserWindow = require('electron')
-
+const BrowserWindow = require('electron');
+var marquee = require("jquery.marquee");
+var shuffleMode = false;
+var $mq = $('.marquee');
 
 
 function setProgress(time){
@@ -58,20 +60,35 @@ $('.play').on('click', '.pausebutton', function(){
 });
 
 // repeat button
-
 function repeat() {
   if (track.loop === false){
     track.loop = true;
-    $('.repeat i').addClass('repeat-on')
+    $('.fa-retweet').addClass('repeat-on')
   }
-  else if (track.loop === true) {
-    track.loop === false;
-    $('.repeat i').removeClass('repeat-on')
+  else {
+    track.loop = false;
+    $('.fa-retweet').removeClass('repeat-on')
   }
 }
 
-$('.play').on('click', '.pausebutton', function(){
+$('div.repeat').on('click', function(){
+  repeat();
+});
 
+// shuffle button
+function shuffle() {
+  if (shuffleMode === false){
+    shuffleMode = true;
+    $('.fa-random').addClass('shuffle-on');
+  }
+  else {
+    shuffleMode = false;
+    $('.fa-random').removeClass('shuffle-on')
+  }
+}
+
+$('div.shuffle').on('click', function(){
+  shuffle()
 });
 
 // progress bar update on click
@@ -179,6 +196,13 @@ function progressBarClock() {
 }
 
 
+$(".tname").bind("webkitAnimationEnd mozAnimationEnd animationEnd", function(){
+  $(this).removeClass("marquee")
+})
+
+$(".tname").hover(function(){
+  $(this).addClass("marquee");
+})
 
 function setID3Data() {
   // id3 tag scanner
@@ -200,6 +224,8 @@ function setID3Data() {
 
 }
 
+
+
 // excecute clocks
 function initialise() {
   setInterval(clockInTime, 500);
@@ -208,36 +234,4 @@ function initialise() {
   setInterval(progressBarClock, 1000);
 }
 
-setTimeout(initialise, 1000);
-
-/* // uint8clusteredarray to img
-// create an offscreen canvas
-var canvas=document.createElement("canvas");
-var ctx=canvas.getContext("2d");
-
-// size the canvas to your desired image
-canvas.width=512;
-canvas.height=512;
-
-// get the imageData and pixel array from the canvas
-var imgData=ctx.getImageData(0,0,512,512);
-var data=id3json.tags.picture.data;
-
-// manipulate some pixel elements
-for(var i=0;i<data.length;i+=4){
-    data[i]=255;   // set every red pixel element to 255
-    data[i+3]=255; // make this pixel opaque
-}
-
-// put the modified pixels back on the canvas
-ctx.putImageData(imgData,0,0);
-
-// create a new img object
-var image=new Image();
-
-// set the img.src to the canvas data url
-image.src=canvas.toDataURL();
-
-// append the new img object to the page
-//document.body.appendChild(image);
-*/
+setTimeout(initialise, 2000);
