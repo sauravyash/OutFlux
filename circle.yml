@@ -6,6 +6,7 @@ dependencies:
     - npm set progress=false
     - npm install
     - npm install rimraf -g
+    - npm install electron --save-dev
 deployment:
   release:
     tag: /v[0-9]+(\.[0-9]+)*/
