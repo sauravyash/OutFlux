@@ -4,7 +4,7 @@
   "description": "The peer to peer music streaming service",
   "main": "main.js",
   "scripts": {
-    
+    "test": "electron ."
   },
   "repository": {
     "type": "git",
