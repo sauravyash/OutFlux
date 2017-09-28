@@ -13,8 +13,8 @@ function createWindow () {
     height: 600,
     titleBarStyle: 'hiddenInset',
     frame: true,
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 250,
+    minHeight: 400,
     transparent: false
   })
 
@@ -46,9 +46,9 @@ app.on('ready', createWindow)
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  // if (process.platform !== 'darwin') {
+   app.quit()
+  // }
 })
 
 app.on('activate', () => {
@@ -61,3 +61,9 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+//
+// app.addEventListener('mousewheel', function(e) {
+//   if (e.ctrlKey) {
+//     e.preventDefault();
+//   }
+// });

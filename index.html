@@ -1,106 +1,287 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="dependencies/fontawesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="dependencies/bootstrap4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="player.css">
-    <link rel="stylesheet" type="text/css" href="menu.css">
-    <title>OutFlux</title>
-  </head>
-  <body>
-    <!--div class="loading">
-      <div class="loading-left">
-      </div>
-      <div class="loading-right">
-      </div>
-    </div-->
-    <div class="titlebar">
-    </div>
-    <div class="window">
-      <div class="sidebar">
-        <div 
-      </div>
-      <div class="viewer">
-      </div>
-    </div>
-    <div class="player">
-      <div class="track col-3">
-        <div class="art col-3">
-          <img id="albumart" src="http://www-cdr.stanford.edu/~petrie/blank.gif"/>
-        </div>
-        <div class="trackdetails col-9">
-          <div class="trackname">
-            <a class="tname small marquee">No Track Specified</a>
-          </div>
-          <div class="artistname">
-            <a class="aname small marquee">No Artist Specified</a>
-          </div>
-        </div>
-      </div>
-      <div class="controls col-6">
-        <div class="controlbutton col">
-          <div class="shuffle col-3">
-              <i class="fa fa-random"></i>
-          </div>
-          <div class="play-previous col-2">
-            <i class="fa fa-step-backward"></i>
-          </div>
-          <div class="play col-2">
-            <i class="fa playerbutton playbutton"></i>
-          </div>
-          <div class="play-next col-2">
-            <i class="fa fa-step-forward"></i>
-          </div>
-          <div class="repeat col-3">
-            <i class="fa fa-retweet"></i>
-          </div>
-        </div>
-        <div class="progressinfo col">
-          <div class="currenttime col-2 small">
-            <a class="ctime small">-:--</a>
-          </div>
-          <div class="progressbar col-8">
-          </div>
-          <div class="totaltime col-2 small">
-            <a class="ttime small">-:--</a>
-          </div>
-        </div>
-      </div>
-      <div class="volume col-3">
-        <div class="vol-controller col-9">
-          <div class="vol-icon">
-            <i class="fa fa-volume-off vol-ico"></i>
-          </div>
-          <div class="vol-scroll">
-          </div>
-        </div>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="dependencies/fontawesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="dependencies/bootstrap4/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="dependencies/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="dependencies/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title>OutFlux</title>
+</head>
+<body>
+  <!-- <div class="titlebar">
+  </div> -->
+  <div class="container-fluid">
+    <div class="sidebar" id="sidebar">
+      <div class="nav flex-column nav-pills" id="menu-tab" role="tablist">
+        <a class="nav-link active" id="menu-home-tab" data-toggle="pill" href="#menu-home" role="tab" aria-controls="menu-home" aria-expanded="true">Home</a>
+        <a class="nav-link" id="menu-tophundred-tab" data-toggle="pill" href="#menu-tophundred" role="tab" aria-controls="menu-tophundred" aria-expanded="true">Top 100 Charts</a>
+        <a class="nav-link" id="menu-playlists-tab" data-toggle="pill" href="#menu-playlists" role="tab" aria-controls="menu-playlists" aria-expanded="true">Playlists</a>
+        <a class="nav-link" id="menu-album-tab" data-toggle="pill" href="#menu-album" role="tab" aria-controls="menu-album" aria-expanded="true">Album</a>
+        <a class="nav-link" id="menu-artist-tab" data-toggle="pill" href="#menu-artist" role="tab" aria-controls="menu-artist" aria-expanded="true">Artist</a>
+        <a class="nav-link" id="menu-settings-tab" data-toggle="pill" href="#menu-settings" role="tab" aria-controls="menu-settings" aria-expanded="true">Settings</a>
       </div>
     </div>
-  </body>
+    <div class="content" id="content">
+      <!-- <a href="#sidebar" class="menu-link">☰</a> -->
+      <div class="content-bar">
+        <ul class="nav navbar-dark">
+          <li class="nav-item">
+            <div class="macOS-buttons">
+            </div>
+          </li>
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0">
+              <div class="search-box">
+                <input type="text" class="searchText">
+                <button type="submit" class="submitButton">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="menu-tabcontent">
+        <div class="tab-pane fade show active" id="menu-home" role="tabpanel" aria-labelledby="menu-home-tab">
+          <div class="titleInfo">
+            <div class="slideshow-home">
+              <div>
+                <img src="Music/_ album title goes here _.jpg" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/A Head Full of Dreams.png" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/Adventure.png" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/Ease My Mind v Ragga Bomb Remixes - EP.png" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/G I R L.jpg" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/Gemini EP.png" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+              <div>
+                <img src="Music/iii.png" class="" alt="">
+                <h3>Album Name</h3>
+                <span>Artist</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-control">
+            <div class="carousel-home" id="homeCarousel">
+              <div>
+                <img src="Music/_ album title goes here _.jpg" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/A Head Full of Dreams.png" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/Adventure.png" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/Ease My Mind v Ragga Bomb Remixes - EP.png" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/G I R L.jpg" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/Gemini EP.png" class="" alt="">
+              </div>
+              <div>
+                <img src="Music/iii.png" class="" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="recommendation-list">
+            <div class="discover">
+              <div class="card bg-dark text-white">
+                <img class="card-img" src="stock/img/discover.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">Discover</h4>
+                </div>
+              </div>
+            </div>
+            <div class="newReleases">
+              <div class="card bg-dark text-white">
+                <img class="card-img" src="stock/img/newReleases.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">New Releases</h4>
+                </div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="card bg-dark text-white">
+                <img class="card-img" src="stock/img/charts-rec.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">Charts</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="genre-list">
+            <div class="">
+
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="menu-tophundred" role="tabpanel" aria-labelledby="menu-tophundred-tab">
+          Top 100 CHARTS
+        </div>
+        <div class="tab-pane fade" id="menu-playlists" role="tabpanel" aria-labelledby="menu-playlists-tab">
+          Playlists
+        </div>
+        <div class="tab-pane fade" id="menu-album" role="tabpanel" aria-labelledby="menu-album-tab">
+          Album View Test
+        </div>
+        <div class="tab-pane fade" id="menu-artist" role="tabpanel" aria-labelledby="menu-artist-tab">
+          Artist View Test
+        </div>
+        <div class="tab-pane fade" id="menu-settings" role="tabpanel" aria-labelledby="menu-settings-tab">
+          Settings
+        </div>
+      </div>
+    </div>
+    <div class="other" id="other">
+      <ul class="nav nav-pills nav-justified mb-3" id="other-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="other-friends-tab" data-toggle="pill" href="#other-friends" role="tab" aria-controls="other-friends" aria-expanded="true">Friends</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="other-sec-tab" data-toggle="pill" href="#other-sec" role="tab" aria-controls="other-sec" aria-expanded="true">Profile</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="other-tabContent">
+        <div class="tab-pane fade show active" id="other-friends" role="tabpanel" aria-labelledby="other-friends-tab">
+          <div class="friendInfoBox">
+            <div class="media">
+              <img class="d-flex align-self-center mr-3 rounded-circle userImg" src="icons/outflux1024.png" alt="User Image">
+              <div class="media-body">
+                <p class="mb-0">Long User Name</p>
+                <p class="mb-0">Song Title</p>
+                <p class="mb-0">Artist</p>
+                <p class="mb-0">Album Name</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade row justify-content-center" id="other-sec" role="tabpanel" aria-labelledby="other-sec-tab">
+          <div class="currentUserImg col-12">
+            <img class="rounded-circle" src="icons/W_2013_165.jpg" alt="Current User Image">
+          </div>
+          <h4>Your Profile</h4>
+          <hr style="background-color: white;">
+          <div class="currentUserInfo">
+            <span class="">
+              Yash Agasti
+            </span>
+            <br>
+            <span class="">
+              @sauravyash
+            </span>
+            <br>
+            <span class="">
+              Bio details
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="player">
+
+  </div>
   <footer>
-  <!-- electron code-->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-  <!--
-  ------------------------------
-  || Dependency script imports ||
-  ------------------------------
-  Notes:
-  - jquery 3.2.1
-  - Jquery ui
-  - bootstrap 4 alpha in use
-    - tether is a dependency of bootstrap4
-  - js ID# tag scanner: https://github.com/43081j/id3
-  -->
-  <script src="dependencies/jquery-3.2.1.min.js"></script>
-  <script src="dependencies/jquery-1.11.4.min.js"></script>
-  <script src="dependencies/tether/dist/js/tether.js"></script>
-  <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
-  <script src='https://cdn.jsdelivr.net/jquery.marquee/1.4.0/jquery.marquee.min.js'></script>
-  <!-- app specific js -->
-  <script src="player.js"></script>
-  <script src="menu.js"></script>
-  <!-- electron code-->
-  <script>if (window.module) module = window.module;</script>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!--
+    _______________________________
+    |  Dependency script imports  |
+    |_____________________________|
+    Notes:
+    - jquery 3.2.1
+    - Jquery ui 1.11.4
+    - Jquery Migrate 1.2.1
+    - bootstrap 4 alpha in use
+      - popper is a dependency of bootstrap4
+    - js ID# tag scanner: https://github.com/43081j/id3
+    - slick for sliding content
+    -->
+    <script src="dependencies/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="dependencies/jQuery/jquery-UI-1.11.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="dependencies/popper/popper.min.js"></script>
+    <script src="dependencies/bootstrap4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="dependencies/slick/slick.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+         $('.slideshow-home').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          asNavFor: '.carousel-home'
+        });
+        $('.carousel-home').slick({
+          autoplay: true,
+          speed: 1000,
+          autoplaySpeed: 5000,
+          dots: true,
+          centerMode: true,
+          centerPadding: '60px',
+          slidesToShow: 3,
+          accessibility: false,
+          asNavFor: '.slideshow-home',
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      });
+    </script>
+    <!-- app specific js -->
+    <script src="player.js"></script>
+    <!-- electron code-->
+    <script>if (window.module) module = window.module;</script>
+    <script>
+      var webFrame = require('electron').webFrame;
+      webFrame.setVisualZoomLevelLimits(1, 1);
+      webFrame.setLayoutZoomLevelLimits(0, 0);
+    </script>
   </footer>
+</body>
 </html>

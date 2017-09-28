@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="dependencies/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="dependencies/slick/slick-theme.css"/>
+    <style>
+      body {
+        background-color: #666;
+      }
+      @font-face {
+          font-family: slick;
+          src: url(dependencies/slick/fonts/slick.ttf);
+      }
+      .slick-prev:before, .slick-next:before {
+      font-family: slick;
+      }
+      .slick-next:before {
+        content: '→';
+      }
+      .slick-prev:before {
+        content: '←';
+      }
+    </style>
+  </head>
+  <body>
+    <div class="your-class" style="width:800px; margin:0 auto;">
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+      <div>your content</div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="dependencies/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.your-class').slick({
+          centerMode: true,
+          centerPadding: '60px',
+          slidesToShow: 3,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      });
+    </script>
+  </body>
+</html>

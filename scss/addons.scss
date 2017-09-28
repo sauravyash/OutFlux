@@ -1,0 +1,91 @@
+// electron drag window
+.titlebar {
+  height:36px;
+  width:100%;
+  position: fixed;
+  top:0;
+  -webkit-app-region: drag;
+  z-index: 100;
+  // background-color: #373535;
+}
+
+// electron remove highlighting
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+// .panel {
+//     position: fixed;
+//     left: -15.625em; /*left or right and the width of your navigation panel*/
+//     width: 15.625em; /*should match the above value*/
+// }
+// .wrap{
+//     position: relative;
+// }
+@font-face {
+    font-family: slick;
+    src: url(dependencies/slick/fonts/slick.ttf);
+}
+.slick-prev:before, .slick-next:before {
+font-family: slick;
+}
+.slick-next{
+  &:before {
+    content: '→';
+  }
+}
+
+.slick-prev{
+  margin-right: 36px;
+  &:before {
+    content: '←';
+  }
+}
+
+.slick-arrow{
+  z-index: 100;
+}
+
+.slick-list {
+  overflow: hidden;
+}
+
+.carousel-home .slick-list .slick-track div img {
+  height:95%;
+  border-radius: 8px;
+  box-shadow:9px 3px 20px 4px #222;
+  margin: 6px 0;
+}
+
+
+.slideshow-home .slick-list .slick-track div img {
+  width:100%;
+  position: relative;
+  filter: blur(4px);
+}
+
+.slideshow-home .slick-list .slick-track div{
+  transform: translateY(-75%);
+}
+
+.slideshow-home .slick-list .slick-track div h3{
+  position: absolute;
+  bottom:  -12vh;
+  left: 0;
+  padding: 2px 8px;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slideshow-home .slick-list .slick-track div span {
+  position: absolute;
+  bottom:  -15vh;
+  left: 0;
+
+  padding: 0px 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 1.25rem;
+}
