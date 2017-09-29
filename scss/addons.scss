@@ -53,12 +53,29 @@ font-family: slick;
   overflow: hidden;
 }
 
-.carousel-home .slick-list .slick-track div img {
-  height:95%;
-  border-radius: 8px;
-  box-shadow:9px 3px 20px 4px #222;
-  margin: 6px 0;
+.carousel-home .slick-list .slick-track div {
+  transition: 0.1s ease;
+  & img{
+    height:95%;
+    border-radius: 8px;
+    // box-shadow: 0px 0px 20px 0px #fff;
+    // box-shadow:9px 3px 20px 4px #222;
+    transition: 0.1s ease;
+    margin: 6px 0;
+    &:hover{
+      animation: growCard 0.1s;
+      animation-fill-mode: forwards
+    }
+    &:not(:hover){
+      animation: shrinkCard 0.1s;
+      animation-fill-mode: forwards
+    }
+  }
+  &:active{
+    transform: scale(0.85);
+  }
 }
+
 
 
 .slideshow-home .slick-list .slick-track div img {

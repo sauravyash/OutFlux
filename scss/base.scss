@@ -181,14 +181,14 @@ div {
   z-index: 1000
 }
 
-
 .carousel-control{
   display:-webkit-box;
   -webkit-box-pack:center;
   // -webkit-box-align:center;
-  padding: 16px 8px;
+  padding: 16px 16px 32px;
   height: 45vw * .428571429;
   position: relative;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.35);
 }
 
 .recommendation-list{
@@ -199,6 +199,16 @@ div {
   flex-direction: row;
   overflow: hidden;
   padding: 4px 16px;
+  transition: .5s ease;
+  & .card{
+    // box-shadow: inset 0px 0px 1px 0px #f8f9fa;
+    // border: 0px solid rgba(#000, 0);
+    border: 0px solid rgba(0,0,0,0);
+    & *{
+      transition: 0.1s ease;
+    }
+
+  }
   & > div{
     flex: 1 1 auto;
     padding: 8px 16px;
@@ -209,22 +219,61 @@ div {
 
     // position: relative;
     margin-bottom: 0;
-    //height: 100%;
+    height: 100%;
     width: 100%;
     font-size: 1.5rem;
-    transform: translate(0, 50%);
+    transform: translate(0, 30%);
     text-align: center;
     //@include customFont(Aller, display);
     color: #eee;
-
+    opacity: 0;
+    transition: .5s ease;
+    text-shadow: 0px 0px 30px rgba(150, 150, 150, 1);
   }
 
   & .card img{
     height: 95%;
     transform: translateY(-20%);
-    filter: blur(4px);
+
     margin: 6px 0;
     transform: translate(0, 0);
+
+  }
+}
+
+.card:hover {
+  & .card-img-overlay h4{
+    opacity: 1;
+  }
+  & img{
+    filter: blur(4px);
+  }
+  border: 0px solid rgba(0, 0, 0, 0);
+  animation: growCard 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.card:not(:hover){
+  animation: shrinkCard 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes growCard {
+  from{
+    transform: scale(1.0);
+  }
+  to{
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shrinkCard {
+  from{
+    //transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  to{
+    transform: scale(1.0);
   }
 }
 
@@ -254,6 +303,7 @@ div {
 #menu-home {
   top: -36px;
   position: relative;
+  padding: 4px 8px;
 }
 
 #other-friends {
@@ -264,6 +314,9 @@ div {
   height: 48px;
   width: 48px;
   background-color: rgb(0, 0, 0);
+  position: relative;
+  top: -24px;
+  left: 0px;
 }
 
 .friendInfoBox{
@@ -271,10 +324,55 @@ div {
   width: 100%;
   padding: 8px 16px;
   overflow: hidden;
+  transition: 0.5s ease;
+  &:hover div .profilepicHolder{
+    border: 3px solid #ccc;
+    &::before{
+      visibility: visible;
+    }
+  }
+  & div .profilepicHolder:hover{
+    border: 3px solid #fff;
+    transition: 0.1s ease;
+    &::before{
+      visibility: visible;
+      color: #fff;
+    }
+    &:active{
+      transform: scale(0.8) translateY(40%);
+    }
+  }
+}
+
+div.card:active *{
+  transform: scale(0.9)
+}
+
+.profilepicHolder{
+  height: 48px;
+  width: 48px;
+  transform: translateY(30%);
+  border-radius: 100%;
+  border: 0px solid #ccc;
+  overflow: hidden;
+  &::before{
+    // width:100%;
+    font-family:FontAwesome;
+    content: "\f04b";
+    position: relative;
+    z-index: 1000;
+    left: 16px;
+    top:8px;
+    visibility: hidden;
+  }
 }
 
 .media {
   overflow: hidden;
+}
+
+.media-body {
+    padding-left: 24px;
 }
 
 .media-body p{
