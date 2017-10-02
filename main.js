@@ -24,7 +24,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-
+  win.maximize()
   // Open the DevTools.
   // win.webContents.openDevTools()
 

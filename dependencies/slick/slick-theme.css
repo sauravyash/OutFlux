@@ -42,18 +42,18 @@
     background: transparent;
 }
 .slick-prev:hover,
-.slick-prev:focus,
+.slick-prev:active,
 .slick-next:hover,
-.slick-next:focus
+.slick-next:active
 {
     color: transparent;
     outline: none;
-    background: transparent;
+    /*background: transparent;*/
 }
 .slick-prev:hover:before,
-.slick-prev:focus:before,
+.slick-prev:active:before,
 .slick-next:hover:before,
-.slick-next:focus:before
+.slick-next:active:before
 {
     opacity: 1;
 }

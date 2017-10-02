@@ -64,10 +64,19 @@
     width: 250px; }
 
   .carousel-control {
-    height: 16.714285731vw !important; } }
+    height: 16.714285731vw !important; }
+
+  .slick-prev {
+    left: -5vmax !important; }
+
+  .slick-next {
+    right: -5vmax !important; } }
 @media (min-width: 1340px) {
   .recommendation-list .card .card-img-overlay h4 {
     font-size: 2rem !important; } }
+.slick-arrow:focus {
+  outline: none; }
+
 html, div, body {
   height: 100%;
   width: 100%;
@@ -75,6 +84,17 @@ html, div, body {
   background-color: #373535;
   color: #ccc; }
 
+@keyframes loadScreen {
+  0% {
+    opacity: 1;
+    display: block;
+    height: 100%;
+    width: 100%; }
+  99% {
+    opacity: 0;
+    display: none; }
+  100% {
+    visibility: collapse; } }
 body .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -130,7 +150,7 @@ div {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  padding: 4px 16px;
+  padding: 8px 16px;
   transition: .5s ease; }
   .recommendation-list .card {
     border: 0px solid rgba(0, 0, 0, 0); }
@@ -138,7 +158,7 @@ div {
       transition: 0.1s ease; }
   .recommendation-list > div {
     flex: 1 1 auto;
-    padding: 8px 16px;
+    padding: 12px 24px;
     overflow: hidden; }
   .recommendation-list .card .card-img-overlay h4 {
     margin-bottom: 0;
@@ -194,11 +214,18 @@ div {
   height: 30%;
   z-index: 2;
   border-bottom: 4px solid #333; }
+  .titleInfo > div {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35); }
 
 #menu-home {
+  -webkit-transform: translate3d(0, 0, 0);
   top: -36px;
   position: relative;
-  padding: 4px 8px; }
+  padding: 4px 8px;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+  #menu-home > div:not(.titleInfo) {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35); }
 
 #other-friends {
   overflow-y: scroll; }
@@ -223,15 +250,16 @@ div {
       visibility: visible; }
   .friendInfoBox div .profilepicHolder:hover {
     border: 3px solid #fff;
-    transition: 0.1s ease; }
+    transition: 0.1s ease;
+    transform: scale(1.1) translateY(28%); }
     .friendInfoBox div .profilepicHolder:hover::before {
       visibility: visible;
       color: #fff; }
     .friendInfoBox div .profilepicHolder:hover:active {
-      transform: scale(0.8) translateY(40%); }
+      transform: scale(0.95) translateY(35%); }
 
 div.card:active * {
-  transform: scale(0.9); }
+  transform: scale(0.95); }
 
 .profilepicHolder {
   height: 48px;
@@ -248,9 +276,6 @@ div.card:active * {
     left: 16px;
     top: 8px;
     visibility: hidden; }
-
-.media {
-  overflow: hidden; }
 
 .media-body {
   padding-left: 24px; }
@@ -355,6 +380,46 @@ body {
     top: -1px;
     left: 1px; }
 
+svg.outfluxLogo {
+  display: block;
+  overflow: visible;
+  fill: none;
+  stroke: black;
+  height: 20%;
+  width: 50%;
+  transform: translate(50%, 200%);
+  animation: growLogo 4s ease 1s; }
+  svg.outfluxLogo rect {
+    stroke-width: 2px; }
+  svg.outfluxLogo path {
+    stroke-dasharray: 1000;
+    animation: strokeLogo 3s linear forwards, fillLogo 3s ease 1s forwards; }
+
+@keyframes strokeLogo {
+  0% {
+    stroke-dashoffset: 1000; }
+  100% {
+    stroke-dashoffset: 0; } }
+@keyframes fillLogo {
+  from {
+    fill: #333; }
+  to {
+    fill: #000; } }
+@keyframes growLogo {
+  from {
+    transform: scale(1) translate(50%, 200%); }
+  to {
+    transform: scale(1.2) translate(42%, 160%);
+    visibility: hidden; } }
+.startAnimation {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #373535;
+  z-index: 999999999;
+  animation: loadScreen 1s ease 1.5s;
+  animation-fill-mode: forwards; }
+
 .titlebar {
   height: 36px;
   width: 100%;
@@ -376,35 +441,66 @@ body {
 .slick-prev:before, .slick-next:before {
   font-family: slick; }
 
-.slick-next:before {
-  content: '→'; }
+.slick-next {
+  right: -6.5vmax !important; }
+  .slick-next:before {
+    content: '→'; }
 
 .slick-prev {
-  margin-right: 36px; }
+  left: -6.5vmax !important; }
   .slick-prev:before {
     content: '←'; }
 
 .slick-arrow {
-  z-index: 100; }
+  width: 7vmax;
+  z-index: 100;
+  background-color: #373535;
+  height: 115%; }
 
-.slick-list {
-  overflow: hidden; }
+.carousel-home .slick-list {
+  overflow-x: hidden;
+  overflow: visible; }
 
-.carousel-home .slick-list .slick-track div {
-  transition: 0.1s ease; }
-  .carousel-home .slick-list .slick-track div img {
+.carousel-home .slick-list .slick-track .slick-slide {
+  transition: 0.1s ease;
+  margin-left: 24px; }
+  .carousel-home .slick-list .slick-track .slick-slide img {
     height: 95%;
     border-radius: 8px;
     transition: 0.1s ease;
     margin: 6px 0; }
-    .carousel-home .slick-list .slick-track div img:hover {
-      animation: growCard 0.1s;
-      animation-fill-mode: forwards; }
-    .carousel-home .slick-list .slick-track div img:not(:hover) {
-      animation: shrinkCard 0.1s;
-      animation-fill-mode: forwards; }
-  .carousel-home .slick-list .slick-track div:active {
-    transform: scale(0.85); }
+  .carousel-home .slick-list .slick-track .slick-slide:hover {
+    transform: scale(1.1); }
+    .carousel-home .slick-list .slick-track .slick-slide:hover img {
+      filter: blur(2px); }
+    .carousel-home .slick-list .slick-track .slick-slide:hover::before {
+      display: block;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.79);
+      content: '';
+      border-radius: 8px;
+      top: 2%; }
+    .carousel-home .slick-list .slick-track .slick-slide:hover::after {
+      font-family: FontAwesome;
+      content: "\f04b";
+      color: #fff;
+      text-indent: 0.9vw;
+      position: absolute;
+      z-index: 1000;
+      font-size: 1.5vw;
+      top: 40%;
+      left: 32%;
+      height: 3.3vw;
+      width: 3.3vw;
+      border: 0.3vw solid #fff;
+      border-radius: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      line-height: 2.9vw; }
+  .carousel-home .slick-list .slick-track .slick-slide:active {
+    transform: scale(0.95); }
+    .carousel-home .slick-list .slick-track .slick-slide:active::after {
+      border-color: #aaa;
+      color: #aaa; }
 
 .slideshow-home .slick-list .slick-track div img {
   width: 100%;
