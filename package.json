@@ -4,7 +4,7 @@
   "description": "The peer to peer music streaming service",
   "main": "main.js",
   "scripts": {
-    "test": "./node_modules/.bin/electron ."
+    "test": "./node_modules/electron/dist/Electron.app/Contents/MacOS/Electron .t ha"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/sauravyash/OutFlux#readme",
   "devDependencies": {
-    "electron": "^1.7.8"
+    "electron": "^1.7.8",
+    "spectron": "^3.7.2"
   },
   "dependencies": {
     "browserify": "^14.4.0",

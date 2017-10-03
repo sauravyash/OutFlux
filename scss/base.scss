@@ -345,6 +345,17 @@ div {
   overflow-y: scroll;
 }
 
+.sidebar{
+  &::before{
+    content: '';
+    width: 100%;
+    display: block;
+    height: 36px;
+    margin-top: -36px;
+    -webkit-app-region: drag;
+  }
+}
+
 .userImg{
   height: 48px;
   width: 48px;
