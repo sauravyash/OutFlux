@@ -4,7 +4,7 @@
 
 **(Stage: Experimental)**
 
-OutFlux is a peer to peer based music streaming client/player similar to Popcorn Time for movies, created with Electron. I just started the project, feel free to do a pull request if you want.
+> OutFlux is a peer to peer based music streaming client/player similar to Popcorn Time for movies, created with Electron. I just started the project, feel free to do a pull request if you want.
 
 ## To Do
 ### Currently Implementing

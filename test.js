@@ -14,15 +14,12 @@ app.start().then(function () {
   // Verify the window is visible
   assert.equal(isVisible, true);
 }).then(function () {
-  console.log('Browser Window is visible (verified)');
   // Get the window's title
   return app.client.getTitle()
 }).then(function (title) {
-  console.log('Browser Window title matched to outflux');
   // Verify the window's title
-  assert.equal(title, 'outflux')
+  assert.equal(title, 'OutFlux')
 }).then(function () {
-  console.log('Browser Window is visible');
   // Stop the application
   return app.stop()
 }).catch(function (error) {
