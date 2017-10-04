@@ -10,7 +10,7 @@ dependencies:
     - npm install electron-installer-debian -g
 test:
   override:
-    - electron-packager . --overwrite --platform=linux --arch=x64
+    - electron-packager . --overwrite --platform=linux --arch=x64 --ignore=node_modules/\.bin
     - electron-installer-debian --src outflux-linux-x64 --dest linuxInstallers/ --arch amd64
     - npm run testCI
 
