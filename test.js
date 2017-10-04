@@ -3,7 +3,7 @@ var Application = require('spectron').Application
 var assert = require('assert')
 
 var app = new Application({
-  path: 'outFlux-linux-x64/outflux'
+  path: 'outflux-linux-x64/outflux'
 })
 
 app.start().then(function () {
@@ -22,7 +22,7 @@ app.start().then(function () {
   // Verify the window's title
   assert.equal(title, 'outflux')
 }).then(function () {
-  console.log('verified above');
+  console.log('Browser Window is visible');
   // Stop the application
   return app.stop()
 }).catch(function (error) {
