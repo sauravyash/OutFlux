@@ -3,7 +3,7 @@ var Application = require('spectron').Application
 var assert = require('assert')
 
 var app = new Application({
-  path: 'linuxInstallers/outflux_1.0.0_amd64.deb'
+  path: 'OutFlux-linux-x64/OutFlux'
 })
 
 app.start().then(function () {
