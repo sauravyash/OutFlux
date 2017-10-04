@@ -3,7 +3,7 @@ var Application = require('spectron').Application
 var assert = require('assert')
 
 var app = new Application({
-  path: '/Applications/MyApp.app/Contents/MacOS/MyApp'
+  path: 'OutFlux-darwin-x64/OutFlux.app/Contents/MacOS/OutFlux'
 })
 
 app.start().then(function () {
@@ -17,7 +17,7 @@ app.start().then(function () {
   return app.client.getTitle()
 }).then(function (title) {
   // Verify the window's title
-  assert.equal(title, 'My App')
+  assert.equal(title, 'OutFlux')
 }).then(function () {
   // Stop the application
   return app.stop()

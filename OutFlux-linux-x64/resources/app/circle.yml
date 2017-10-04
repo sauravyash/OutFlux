@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: 8.4.0
+dependencies:
+  override:
+    - npm set progress=false
+    - npm install
+    - npm install rimraf -g
+    - npm install electron-packager -g
+test:
+  override:
+    - node test
+
+deployment:
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+      - electron-packager . OutFlux --platform=linux --arch=x64
+      - 
