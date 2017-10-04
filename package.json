@@ -4,7 +4,8 @@
   "description": "The peer to peer music streaming service",
   "main": "main.js",
   "scripts": {
-    "test": "./node_modules/electron/dist/Electron.app/Contents/MacOS/Electron .t ha"
+    "runApp": "./node_modules/electron/dist/Electron.app/Contents/MacOS/Electron .",
+    "testCI": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
     "spectron": "^3.7.2"
   },
   "dependencies": {
-    "browserify": "^14.4.0",
     "electron-builder": "^19.33.0"
   }
 }

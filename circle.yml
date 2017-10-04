@@ -7,13 +7,12 @@ dependencies:
     - npm install
     - npm install rimraf -g
     - npm install electron-packager -g
-    - sudo apt-get install build-essential checkinstall
+    - npm install electron-installer-debian -g
 test:
   override:
-    - electron-packager . OutFlux --platform=linux --arch=x64
-    - tar -czvf test-outflux.tar.gz OutFlux-linux-x64
-    - gpt-build test-outflux.tar.gz -verbose
-    - node test
+    - electron-packager . --overwrite --platform=linux --arch=x64 --prune=true
+    - electron-installer-debian --src outflux-linux-x64 --dest linuxInstallers/ --arch amd64
+    - npm run testCI
 
 deployment:
   release:
