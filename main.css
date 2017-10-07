@@ -158,6 +158,8 @@ div {
     transform: scale(1); }
     .recommendation-list .card * {
       transition: 0.1s ease; }
+    .recommendation-list .card:active * {
+      transform: scale(0.95); }
     .recommendation-list .card:hover {
       border: 0px solid rgba(0, 0, 0, 0); }
       .recommendation-list .card:hover .card-img-overlay h4 {
@@ -185,16 +187,48 @@ div {
     margin: 6px 0;
     transform: translate(0, 0); }
 
-@keyframes growCard {
-  from {
-    transform: scale(1); }
-  to {
-    transform: scale(1.1); } }
-@keyframes shrinkCard {
-  from {
-    transform: scale(1.1); }
-  to {
-    transform: scale(1); } }
+.genre-list {
+  height: auto;
+  width: 100%;
+  padding: 32px;
+  margin-left: 0px; }
+  .genre-list > div {
+    padding: 16px 36px;
+    margin-left: auto;
+    margin-right: auto; }
+    .genre-list > div .card {
+      width: 100%;
+      background-color: #333;
+      margin: auto;
+      transition: 0.3s ease; }
+      .genre-list > div .card img {
+        transition: 0.2s ease; }
+      .genre-list > div .card:hover {
+        transform: scale(1.1); }
+        .genre-list > div .card:hover img {
+          filter: blur(2px) brightness(30%); }
+        .genre-list > div .card:hover::before {
+          content: '';
+          background: url("resources/img/playbutton.png");
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          left: 0;
+          top: 0;
+          z-index: 1000;
+          background-size: 35%;
+          background-repeat: no-repeat;
+          background-position: center; }
+      .genre-list > div .card:active {
+        transform: scale(0.95); }
+      .genre-list > div .card .card-body {
+        position: absolute;
+        height: 160px;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0), black);
+        padding-top: 110px; }
+
 .macOS-buttons {
   width: 64px;
   height: 36px;
@@ -214,8 +248,7 @@ div {
     border-bottom: 1px solid rgba(204, 204, 204, 0.35); }
 
 #menu-home {
-  -webkit-transform: translate3d(0, 0, 0);
-  top: -36px;
+  transform: translate3d(0, 0, 0);
   position: relative;
   padding: 4px 8px;
   overflow-x: hidden;
@@ -280,9 +313,6 @@ div {
 .friendInfoBox:hover div .profilepicHolder img {
   top: -27px;
   left: -3px; }
-
-div.card:active * {
-  transform: scale(0.95); }
 
 .profilepicHolder {
   transition: 0.1s ease;

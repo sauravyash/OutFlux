@@ -232,6 +232,9 @@ div {
     & *{
       transition: 0.1s ease;
     }
+    &:active *{
+      transform: scale(0.95)
+    }
     transform: scale(1.0);
     &:hover {
       & .card-img-overlay h4{
@@ -281,28 +284,77 @@ div {
 //   animation-fill-mode: forwards;
 // }
 
-@keyframes growCard {
-  from{
-    transform: scale(1.0);
-  }
-  to{
-    transform: scale(1.1);
-  }
-}
-
-@keyframes shrinkCard {
-  from{
-    //transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  to{
-    transform: scale(1.0);
-  }
-}
+// @keyframes growCard {
+//   from{
+//     transform: scale(1.0);
+//   }
+//   to{
+//     transform: scale(1.1);
+//   }
+// }
+//
+// @keyframes shrinkCard {
+//   from{
+//     //transform: scale(1.1);
+//     transform: scale(1.1);
+//   }
+//   to{
+//     transform: scale(1.0);
+//   }
+// }
 
 .genre-list {
-  
+  height: auto;
+  width:100%;
+  padding: 32px;
+  margin-left: 0px;
+  & > div{
+    padding: 16px 36px;
+    margin-left: auto;
+    margin-right: auto;
+    & .card{
+      //width: calc(100% - 2vw);
+      width: 100%;
+      background-color:#333;
+      margin: auto;
+      transition: 0.3s ease;
+      & img{
+        transition: 0.2s ease;
+      }
+      &:hover{
+        transform: scale(1.1);
+        & img{
+          filter: blur(2px) brightness(30%);
+        }
+        &::before{
+          content:'';
+          background: url('resources/img/playbutton.png');
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          left: 0;
+          top: 0;
+          z-index: 1000;
+          background-size: 35%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+      &:active{
+        transform: scale(0.95);
+      }
+      & .card-body{
+        position: absolute;
+        height: 160px;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+        padding-top: 110px;
+      }
+    }
+  }
 }
+
 .macOS-buttons{
   width:64px;
   height:36px;
@@ -330,8 +382,8 @@ div {
 }
 
 #menu-home {
-  -webkit-transform: translate3d(0, 0, 0);
-  top: -36px;
+  transform: translate3d(0, 0, 0);
+  //top: -36px;
   position: relative;
   padding: 4px 8px;
   overflow-x: hidden;
@@ -415,9 +467,6 @@ div {
     left: -3px;
 }
 
-div.card:active *{
-  transform: scale(0.95)
-}
 
 .profilepicHolder{
   transition: 0.1s ease;
@@ -649,4 +698,122 @@ svg.outfluxLogo{
   background-size: 256px;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+// electron drag window
+.titlebar {
+  height:36px;
+  width:100%;
+  position: fixed;
+  top:0;
+  -webkit-app-region: drag;
+  z-index: 100;
+  // background-color: #373535;
+}
+
+// electron remove highlighting
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+@font-face {
+    font-family: slick;
+    src: url(dependencies/slick/fonts/slick.ttf);
+}
+
+.slick-prev:before, .slick-next:before {
+font-family: slick;
+}
+
+.slick-next{
+  right: -6.5vmax !important;
+  &:before {
+    content: '→';
+  }
+}
+
+.slick-prev{
+  left: -6.5vmax !important;
+  &:before {
+    content: '←';
+  }
+}
+
+.slick-arrow{
+  width: 7vmax;
+  z-index: 100;
+  background-color: #373535;
+  height: 115%;
+}
+
+.carousel-home .slick-list {
+  overflow-x: hidden;
+  overflow: visible;
+}
+
+.carousel-home .slick-list .slick-track .slick-slide {
+  transition: 0.1s ease;
+  margin-left: 24px;
+  & img{
+    height: 96%;
+    width: 96%;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    margin: 6px 0;
+  }
+  &:hover{
+    transform: scale(1.1);
+    & img{
+      filter: blur(2px) brightness(30%);
+    }
+    &::before{
+      content:'';
+      background: url('resources/img/playbutton.png');
+      display: block;
+      position: absolute;
+      left: 4%;
+      top:4%;
+      z-index: 1000;
+      background-size: 35%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
+
+
+.slideshow-home .slick-list .slick-track div img {
+  width:100%;
+  position: relative;
+  filter: blur(4px);
+}
+
+.slideshow-home .slick-list .slick-track div{
+  transform: translateY(-75%);
+}
+
+.slideshow-home .slick-list .slick-track div h3{
+  position: absolute;
+  bottom:  -12vh;
+  left: 0;
+  padding: 2px 8px;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slideshow-home .slick-list .slick-track div span {
+  position: absolute;
+  bottom:  -15vh;
+  left: 0;
+  padding: 0px 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 1.25rem;
 }
