@@ -228,31 +228,43 @@ div {
     // box-shadow: inset 0px 0px 1px 0px #f8f9fa;
     // border: 0px solid rgba(#000, 0);
     border: 0px solid rgba(0,0,0,0);
+    transition: 0.1s ease;
     & *{
       transition: 0.1s ease;
     }
+    transform: scale(1.0);
+    &:hover {
+      & .card-img-overlay h4{
+        opacity: 1;
+      }
+      & img{
+        filter: blur(4px);
+      }
+      border: 0px solid rgba(0, 0, 0, 0);
+      // animation: growCard 0.5s;
+      // animation-fill-mode: forwards;
+    }
+    & .card-img-overlay h4{
 
+      // position: relative;
+      margin-bottom: 0;
+      height: 100%;
+      width: 100%;
+      font-size: 1.5rem;
+      transform: translate(0, 30%);
+      text-align: center;
+      //@include customFont(Aller, display);
+      color: #eee;
+      opacity: 0;
+      transition: .5s ease;
+      text-shadow: 0px 0px 30px rgba(150, 150, 150, 1);
+    }
   }
   & > div{
     flex: 1 1 auto;
     padding: 12px 24px;
     overflow: hidden;
     // margin: 4px 2px;
-  }
-  & .card .card-img-overlay h4{
-
-    // position: relative;
-    margin-bottom: 0;
-    height: 100%;
-    width: 100%;
-    font-size: 1.5rem;
-    transform: translate(0, 30%);
-    text-align: center;
-    //@include customFont(Aller, display);
-    color: #eee;
-    opacity: 0;
-    transition: .5s ease;
-    text-shadow: 0px 0px 30px rgba(150, 150, 150, 1);
   }
 
   & .card img{
@@ -261,26 +273,13 @@ div {
 
     margin: 6px 0;
     transform: translate(0, 0);
-
   }
 }
 
-.card:hover {
-  & .card-img-overlay h4{
-    opacity: 1;
-  }
-  & img{
-    filter: blur(4px);
-  }
-  border: 0px solid rgba(0, 0, 0, 0);
-  animation: growCard 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.card:not(:hover){
-  animation: shrinkCard 0.5s;
-  animation-fill-mode: forwards;
-}
+// .card:not(:hover){
+//   animation: shrinkCard 0.5s;
+//   animation-fill-mode: forwards;
+// }
 
 @keyframes growCard {
   from{
@@ -302,7 +301,7 @@ div {
 }
 
 .genre-list {
-
+  
 }
 .macOS-buttons{
   width:64px;
@@ -321,6 +320,7 @@ div {
 .titleInfo{
   width:100%;
   height: 30%;
+  min-height: 150px;
   //background-color: #999;
   z-index: 2;
   border-bottom: 4px solid #333;
@@ -359,10 +359,14 @@ div {
 .userImg{
   height: 48px;
   width: 48px;
-  background-color: rgb(0, 0, 0);
+  background-color: #aaa;
   position: relative;
   top: -24px;
   left: 0px;
+  // &:hover{
+  //   top: -22px;
+  //   left: -2px;
+  // }
 }
 
 .friendInfoBox{
@@ -371,8 +375,24 @@ div {
   padding: 8px 16px;
   overflow: hidden;
   transition: 0.5s ease;
+  &::after{
+    content: "1h ago";
+    top: -90px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    font-size: 0.75rem;
+    text-align: right;
+    font-weight: 100;
+    z-index: 0;
+  }
   &:hover div .profilepicHolder{
     border: 3px solid #ccc;
+    z-index: 10;
     &::before{
       visibility: visible;
     }
@@ -390,12 +410,17 @@ div {
     }
   }
 }
+.friendInfoBox:hover div .profilepicHolder img {
+    top: -27px;
+    left: -3px;
+}
 
 div.card:active *{
   transform: scale(0.95)
 }
 
 .profilepicHolder{
+  transition: 0.1s ease;
   height: 48px;
   width: 48px;
   transform: translateY(30%);
@@ -414,30 +439,25 @@ div.card:active *{
   }
 }
 
-.media {
-  //overflow: hidden;
-}
-
-.media-body {
-    padding-left: 24px;
-}
-
-.media-body p{
-  &:nth-child(1){
-    color: #fff;
-    font-size: 1rem;
-  }
-  &:nth-child(2){
-    color: #ccc;
-    font-size: 0.75rem;
-  }
-  &:nth-child(3){
-    color: #ccc;
-    font-size: 0.75rem;
-  }
-  &:nth-child(4){
-    color:#ddd;
-    font-size: 0.75rem;
+.friendInfoBox .media .media-body {
+  padding-left: 24px;
+  & p{
+    &:nth-child(1){
+      color: #fff;
+      font-size: 1rem;
+    }
+    &:nth-child(2){
+      color: #ccc;
+      font-size: 0.75rem;
+    }
+    &:nth-child(3){
+      color: #ccc;
+      font-size: 0.75rem;
+    }
+    &:nth-child(4){
+      color:#ddd;
+      font-size: 0.75rem;
+    }
   }
 }
 
@@ -488,44 +508,41 @@ body{
   background-color:rgb(138, 132, 147);
 }
 
-@keyframes searchboxHover{
-  from{
-    width: 0;
-
-  }
-  to{
-    width: calc(100%-24px);
-    padding:2px 24px 2px 12px;
-    width: 80%;
-
-  }
-}
-
-@keyframes submitButtonAlign{
-  from{
-    right:0px;
-  }
-  to{
-    right:24px;
-  }
-}
+// @keyframes searchboxHover{
+//   from{
+//     width: 0;
+//
+//   }
+//   to{
+//     width: calc(100%-24px);
+//     padding:2px 24px 2px 12px;
+//     width: 80%;
+//   }
+// }
+//
+// @keyframes submitButtonAlign{
+//   from{
+//     right:0px;
+//   }
+//   to{
+//
+//   }
+// }
 
 .search-box{
   width: 100%;
   max-width: 300px;
   height: 24px;
   float:left;
-  overflow:hidden;
+  //overflow:hidden;
+  transition: 0.5s ease;
   &:hover .searchText, & .searchText:focus {
-    animation: searchboxHover 1s cubic-bezier(.49,.1,.49,.71);
-    animation-fill-mode: forwards;
-
+    width: calc(100%-24px);
+    padding:2px 24px 2px 12px;
+    width: 80%;
   }
   &:hover .submitButton, .searchText:focus + .submitButton{
-    animation: submitButtonAlign 0.2s linear 0.06s;
-    animation-fill-mode: forwards;
-    position:relative;
-    right:0px;
+    right:24px;
   }
 }
 .searchText{
@@ -537,6 +554,11 @@ body{
   border-radius:16px;
   position:relative;
   left:4px;
+  font-size: 0.75em;
+  transition: 0.5s ease;
+  &:focus{
+    border: 1px solid #fff !important;
+  }
 }
 .submitButton{
   border: 0 solid #000;
@@ -547,6 +569,10 @@ body{
   border-radius: 16px;
   background-color:#ccc;
   z-index:1000;
+  transition: 0.5s ease;
+  position: relative;
+  top:2px;
+  right:0px;
   & i{
     color: #10a8aa;
     position:relative;
@@ -615,4 +641,12 @@ svg.outfluxLogo{
   // transform: translate(-50%,-50%);
   // top: 50%;
   // left:50%;
+}
+
+.carouselImg{
+  background-color: #555;
+  background-image: url(resources/img/music-player.png);
+  background-size: 256px;
+  background-repeat: no-repeat;
+  background-position: center;
 }

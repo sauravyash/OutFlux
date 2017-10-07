@@ -31,6 +31,8 @@ workflows:
   buildAppLinux:
     jobs:
       - electron-packager . --overwrite --platform=linux --arch=x64 --ignore=node_modules/.bin
+    requires:
+      - init
   testAppLinux:
     jobs:
       - npm run testCI
