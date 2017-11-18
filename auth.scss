@@ -1,0 +1,77 @@
+html, body, body > div, form{
+  height:100%;
+  width:100%;
+  color: #ccc;
+}
+
+.no-select{
+  -webkit-user-select: none;  /* Chrome */
+  user-select: none;          /* Likely future */
+}
+
+.mainImage{
+  padding: 1em;
+  height: 20%;
+  width: 100%;
+  padding-top: 36px;
+  background-color: #333;
+  & img {
+    color: #ccc;
+  }
+}
+
+.input-group{
+  width:100%;
+  padding: 0.5em;
+  & input {
+    border-radius: 0.25em !important;
+  }
+}
+
+.nav-pills .nav-link.active, .show > .nav-pills .nav-link, .btn-primary{
+  color: #fff !important;
+  background-color: #14b0b1 !important;
+  border-color: #14b0b1 !important;
+  border-radius: 0.25em !important;
+}
+
+.submitRegion{
+  padding: 0 6em;
+}
+
+.registerSubmit{
+  padding-top: 24px;
+}
+
+.nav .nav-item a {
+    color: #14b0b1;
+}
+
+
+.title-bar {
+  width: 100%;
+  height: 36px;
+  position: fixed;
+  top:0;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  -webkit-app-region: drag;
+}
+
+.content{
+  height: 80%;
+  width:100%;
+  background-color: #333;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.loginInput{
+  color: #ccc;
+}
+
+.checkbox label input{
+  position: relative;
+  top: -1px;
+}

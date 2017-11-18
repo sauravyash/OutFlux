@@ -1,11 +1,14 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain, protocol} = require('electron')
 const path = require('path')
 const url = require('url')
+const fs = require('fs')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let authWindow;
+
+protocol.registerStandardSchemes(['outflux'])
 
 function createMainWindow () {
   // Create the browser window.
@@ -15,7 +18,7 @@ function createMainWindow () {
     titleBarStyle: 'hiddenInset',
     frame: true,
     minWidth: 400,
-    minHeight: 500,
+    minHeight: 600,
     transparent: false
   });
 
@@ -42,21 +45,34 @@ function createMainWindow () {
 function createAuthWindow () {
   // Create the browser window.
   authWindow = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
     titleBarStyle: 'hiddenInset',
     frame: true,
     minWidth: 400,
-    minHeight: 500,
-    transparent: false
+    minHeight: 600,
+    maxWidth: 400,
+    maxHeight: 600,
+    transparent: false,
+    webPreferences: {
+      nodeIntegration: false
+    }
   });
 
+  protocol.registerBufferProtocol('outflux', (request, callback) => {
+    callback({mimeType: 'text/html', data: fs.readFileSync(path.join(__dirname, 'authWindow.html'))})
+  }, (error) => {
+    if (error) console.error('Failed to register protocol')
+  })
+
+  authWindow.loadURL(`outflux://authWindow.html`)
+
   // and load the index.html of the app.
-  authWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'authWindow.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  // authWindow.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'authWindow.html'),
+  //   protocol: 'file:',
+  //   slashes: true
+  // }));
   // Open the DevTools.
   // win.webContents.openDevTools()
 
@@ -73,7 +89,7 @@ function createAuthWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function() {
-  createMainWindow();
+  // createMainWindow();
   createAuthWindow();
 });
 
